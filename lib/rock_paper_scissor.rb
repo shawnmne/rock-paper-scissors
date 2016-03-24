@@ -8,10 +8,7 @@ require "pry"
 #
 #returns outcome determined by the rules of rock paper scissor
 def determine_outcome_from_tosses(toss1, toss2)
-	outcome = "happy dance"
-	if toss1 == "r" && toss2 == "r" ||
-		 toss1 == "p" && toss2 == "p" ||
-		 toss1 == "s" && toss2 == "s" 
+	if toss1 == toss2 
 		outcome = "tie"
 
 	elsif toss1 == "r" && toss2 == "s" ||
@@ -28,4 +25,29 @@ def determine_outcome_from_tosses(toss1, toss2)
 	outcome
 end
 
-binding.pry
+#enter_toss method allows player to enter a toss 
+#
+#
+#returns toss as a "r" for rock, "s" for scissor, "p" for paper.
+def enter_toss
+	toss =nil	
+	while toss != "r" && toss != "s" && toss != "p"
+		print "\nPlease enter 'r' for rock, 's' for scissor, 'p' for paper. "
+		toss = gets.chomp
+	end
+	toss
+end
+
+
+puts "Player one it is your turn"
+player1 = enter_toss
+
+puts "\nPlayer two it is your turn"
+player2 = enter_toss
+puts "\n\n"
+outcome = determine_outcome_from_tosses(player1, player2)
+puts outcome
+
+
+
+
