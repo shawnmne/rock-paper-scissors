@@ -1,29 +1,7 @@
 require "pry"
 require_relative "lib/player.rb"
-#determine_outcome_from_tosses method determines who is the winner based on the rules of rock 
-#   paper scissors
-#
-#+toss1 is the entry player 1 makes and can be a rock, paper, or scissor
-#+toss2 is the entry player 2 makes and can be a rock, paper, or scissorß
-#
-#returns outcome determined by the rules of rock paper scissor
-def determine_outcome_from_tosses(toss1, toss2)
-	if toss1 == toss2 
-		outcome = "tie"
-
-	elsif toss1 == "r" && toss2 == "s" ||
-				toss1 == "p" && toss2 == "r" ||
-				toss1 == "s" && toss2 == "p"
-		outcome = 0
-	
-	elsif toss2 == "r" && toss1 == "s" ||
-				toss2 == "p" && toss1 == "r" ||
-				toss2 == "s" && toss1 == "p"
-		outcome = 1				
-	
-	end
-	outcome
-end
+require_relative "lib/game.rb"
+require_relative "lib.game.rb"
 
 #add_a_player creates a player object
 #
@@ -68,40 +46,17 @@ def add_two_players(players)
 	end
 end
 
-#play_game method plays a game of rock paper scissors
-#
-#+players is an array of 2 players
-#
-#outcome is a string declaring the winner of the game
-def play_game(players)
-	outcome = "tie"
-	while outcome == "tie"
-		puts "\n#{players[0].name} it is your turn"
-		player1 = players[0].enter_toss
-		players[0].move = players[0].move + player1
-		puts "\n#{players[1].name} it is your turn"
-		player2 = players[1].enter_toss
-		players[1].move = players[1].move + player2
-		outcome = determine_outcome_from_tosses(player1, player2)
-	end
-	outcome
-end
 
-#odeclare_winner method outputs the winner to the screen
-#
-#+winner is determined from the play_ganme method 
-#+players is the array of players
-#
-def declare_winner(winner, players)
-	puts "\n#{players[winner].name} has won\n"
-	players[winner].number_of_wins += 1
-end
+
+
 
 #play_matches method plays anassigned number of matches determined by the 
 #   variables matches
 #
 #+matches is the number of matches in the match
 #+players is the array of players
+#
+#returns a call to the show all players method to show the current standings of the players
 def play_matches(matches, players)
 		i = 0
 		while i < matches
@@ -129,8 +84,8 @@ while choice != 0
 	elsif choice == 2
 		puts "Now playing a game\n"
 		add_two_players(players)
-	 	winner = play_game(players)
-		declare_winner(winner, players)
+	 	winner = game.play_game(players)
+		game.declare_winner(winner, players)
 
 	elsif choice == 3
 		puts "Now playing a match\n"
@@ -147,11 +102,4 @@ while choice != 0
 end	
 
 
-#puts "Player one it is your turn"
-#player1 = enter_toss
 
-#puts "\nPlayer two it is your turn"
-#player2 = enter_toss
-#puts "\n\n"
-#outcome = determine_outcome_from_tosses(player1, player2)
-#puts outcome
