@@ -17,18 +17,19 @@ class Player
 		@number_of_wins = number_of_wins
 	end
 
-#enter_toss method allows player to enter a toss 
-#
-#
-#returns toss as a "r" for rock, "s" for scissor, "p" for paper.
-def enter_toss
-	toss =nil	
-	while toss != "r" && toss != "s" && toss != "p"
-		print "\nPlease enter 'r' for rock, 's' for scissor, 'p' for paper. "
-		toss = gets.chomp
+	#enter_toss method allows player to enter a toss 
+	#
+	#
+	#returns toss as a "r" for rock, "s" for scissor, "p" for paper.
+	def enter_toss
+		toss =nil	
+		while toss != "r" && toss != "s" && toss != "p"
+			print "\nPlease enter 'r' for rock, 's' for scissor, 'p' for paper. "
+			toss = gets.chomp
+		end
+		toss
 	end
-	toss
-end
 
-end	
+
+end
 
