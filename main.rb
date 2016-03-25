@@ -1,7 +1,7 @@
 require "pry"
 require_relative "lib/player.rb"
 require_relative "lib/game.rb"
-require_relative "lib.game.rb"
+
 
 #add_a_player creates a player object
 #
@@ -60,8 +60,7 @@ end
 def play_matches(matches, players)
 		i = 0
 		while i < matches
-			winner = play_game(players)
-			declare_winner(winner, players)
+			Game.new.play_game(players)
 			i += 1
 		end
 		show_all_players(players)
@@ -84,8 +83,7 @@ while choice != 0
 	elsif choice == 2
 		puts "Now playing a game\n"
 		add_two_players(players)
-	 	winner = game.play_game(players)
-		game.declare_winner(winner, players)
+		Game.new.play_game(players)
 
 	elsif choice == 3
 		puts "Now playing a match\n"

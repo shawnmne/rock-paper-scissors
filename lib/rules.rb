@@ -9,7 +9,7 @@ require "pry"
 
 class Rule
 
-	attr_accessor
+	
 
 
 
@@ -39,4 +39,3 @@ class Rule
 		outcome
 	end
 
-end
