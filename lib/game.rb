@@ -23,17 +23,23 @@ class Game
 
 
 
-	#play_game method plays a game of rock paper scissors
+	#play_game method plays a game of rock paper scissors.  it calls
 	#
 	#+players is an array of 2 players
 	#
-	#outcome is a string declaring the winner of the game
+	#
 	def play_game(players)
 		winner = take_turns(players)
 		update_wins(winner, players)
 		declare_winner(winner, players)
 	end
 
+
+	#take_turns method plays a game of rock paper scissors
+	#
+	#+players is an array of 2 players
+	#
+	#outcome is either 0 or 1 reflecting player 1 or player 2
 	def take_turns(players)
 		outcome = "tie"
 		while outcome == "tie"
@@ -46,6 +52,12 @@ class Game
 		outcome
 	end
 
+	#update_wins method updates the number of wins of the winner by 1
+	#
+	#+winner is the either 0 or 1 depending on if it is player 1 or 2
+	#+players is the array of players
+	#
+	#
 	def update_wins(winner, players)
 		players[winner].number_of_wins += 1
 	end

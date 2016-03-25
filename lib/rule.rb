@@ -9,7 +9,7 @@ require "pry"
 
 class Rule
 
-	attr_accessor
+
 
 
 

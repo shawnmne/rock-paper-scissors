@@ -18,7 +18,7 @@ class Player
 	end
 
 #enter_toss method allows player to enter a toss 
-#ß
+#
 #
 #returns toss as a "r" for rock, "s" for scissor, "p" for paper.
 def enter_toss
