@@ -4,11 +4,10 @@ require_relative "lib/player.rb"
 #   paper scissors
 #
 #+toss1 is the entry player 1 makes and can be a rock, paper, or scissor
-#+toss2 is the entry player 2 makes and can be a rock, paper, or scissor
-#+players is the array of players playing the game
+#+toss2 is the entry player 2 makes and can be a rock, paper, or scissorß
 #
 #returns outcome determined by the rules of rock paper scissor
-def determine_outcome_from_tosses(toss1, toss2, players)
+def determine_outcome_from_tosses(toss1, toss2)
 	if toss1 == toss2 
 		outcome = "tie"
 
@@ -26,19 +25,6 @@ def determine_outcome_from_tosses(toss1, toss2, players)
 	outcome
 end
 
-#enter_toss method allows player to enter a toss 
-#
-#
-#returns toss as a "r" for rock, "s" for scissor, "p" for paper.
-def enter_toss
-	toss =nil	
-	while toss != "r" && toss != "s" && toss != "p"
-		print "\nPlease enter 'r' for rock, 's' for scissor, 'p' for paper. "
-		toss = gets.chomp
-	end
-	toss
-end
-
 #add_a_player creates a player object
 #
 #accepts the following variable to create the object
@@ -54,7 +40,7 @@ end
 
 #show_player method shows a player and stats for that player
 def show_player(player)
-	puts"\nShowing Players\n"
+	puts"\nShowing Player and Stats\n"
 	puts"#{player.name} has made these moves '#{player.move}'"
 	puts"#{player.name} has won #{player.number_of_wins} games"
 end
@@ -96,7 +82,7 @@ def play_game(players)
 		puts "\n#{players[1].name} it is your turn"
 		player2 = players[1].enter_toss
 		players[1].move = players[1].move + player2
-		outcome = determine_outcome_from_tosses(player1, player2, players)
+		outcome = determine_outcome_from_tosses(player1, player2)
 	end
 	outcome
 end
@@ -111,28 +97,47 @@ def declare_winner(winner, players)
 	players[winner].number_of_wins += 1
 end
 
+#play_matches method plays anassigned number of matches determined by the 
+#   variables matches
+#
+#+matches is the number of matches in the match
+#+players is the array of players
+def play_matches(matches, players)
+		i = 0
+		while i < matches
+			winner = play_game(players)
+			declare_winner(winner, players)
+			i += 1
+		end
+		show_all_players(players)
+end
+
+
 choice = 9
 players = []
 
 puts "Welcome to rock-paper-scissor game"
 
 while choice != 0
-	puts "\n\n1 Add a player\n2 Review players\n3 Play a game\n0 Exit"
+	puts "\n\n1 Review players\n2 Play a game\n3 Play a match\n0 Exit"
 	print "\nPlease make a selection "
 	choice = gets.chomp.to_i
- 
-	if choice == 1
-		players << add_a_player
-		show_player(players.last)
 	
-	elsif choice == 2 
+	if choice == 1 
 	 	show_all_players(players)
 	 	
-	elsif choice == 3
+	elsif choice == 2
 		puts "Now playing a game\n"
 		add_two_players(players)
 	 	winner = play_game(players)
 		declare_winner(winner, players)
+
+	elsif choice == 3
+		puts "Now playing a match\n"
+		add_two_players(players)
+		print "How many games would you like in your match? "
+		matches = gets.chomp.to_i
+		play_matches(matches,players)
 
 	elsif choice == 0
 		puts "\nGoodbye"
