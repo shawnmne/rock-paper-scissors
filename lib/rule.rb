@@ -3,9 +3,9 @@ require "pry"
 
 #this is a class that creates a rule object
 #
-#+
-#+
-#+
+#it only contains methods
+#
+#
 
 class Rule
 
@@ -39,4 +39,5 @@ class Rule
 		outcome
 	end
 
+	
 end

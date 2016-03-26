@@ -4,9 +4,9 @@ require_relative "player.rb"
 
 #this is a class that creates a game object
 #
-#+
-#+
-#+
+#it only contains methods
+#
+#
 
 class Game
 
@@ -35,7 +35,9 @@ class Game
 	end
 
 
-	#take_turns method plays a game of rock paper scissors
+	#take_turns method plays a game of rock paper scissors.  It has each player
+	#   take turns playing either a rock, scissor, or paper and if both players 
+	# 	play the same they must continue untill one has beaten the other
 	#
 	#+players is an array of 2 players
 	#
@@ -43,6 +45,7 @@ class Game
 	def take_turns(players)
 		outcome = "tie"
 		while outcome == "tie"
+				puts "\n\nROCK * PAPER * SCISSORS * SHOOT\n\n"
 				players.each do |player|
 					puts "\n#{player.name} it is your turn"
 					player.move = player.move + player.enter_toss
@@ -51,6 +54,7 @@ class Game
 		end
 		outcome
 	end
+	
 
 	#update_wins method updates the number of wins of the winner by 1
 	#
@@ -61,13 +65,14 @@ class Game
 	def update_wins(winner, players)
 		players[winner].number_of_wins += 1
 	end
+
 	#declare_winner method outputs the winner to the screen
 	#
 	#+winner is determined from the play_ganme method 
 	#+players is the array of players
 	#
 	def declare_winner(winner, players)
-		puts "\n#{players[winner].name} has won\n"
+		puts "\n***#{players[winner].name} has won***\n"
 	end
 
 end	
