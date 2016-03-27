@@ -30,6 +30,12 @@ class Player
 		toss
 	end
 
+	#last_move method returns the last character from the move string
+	#
+	#
+	def last_move
+		move[-1, 1]
+	end
 
 end
 
