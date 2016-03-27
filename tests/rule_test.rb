@@ -22,5 +22,4 @@ class RuleTest < Minitest::Test
 		assert_equal(1, result)
 	end
 
-	#test if
 end
