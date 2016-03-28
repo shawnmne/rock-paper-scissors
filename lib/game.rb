@@ -50,8 +50,7 @@ class Game
 					puts "\n#{player.name} it is your turn"
 					player.move = player.move + player.enter_toss
 			end
-			outcome = Rule.new.determine_outcome_from_tosses(players[0].last_move, 
-								players[1].last_move)
+			outcome = Rule.new.determine_outcome_from_tosses(players[0].last_move, players[1].last_move)
 		end
 		outcome
 	end
