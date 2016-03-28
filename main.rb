@@ -5,8 +5,6 @@ require_relative "lib/game.rb"
 
 #add_a_player creates a player object
 #
-#accepts the following variable to create the object
-#+name player name
 #
 #returns a player object
 def add_a_player
@@ -17,6 +15,10 @@ def add_a_player
 end	
 
 #show_player method shows a player and stats for that player
+#
+#+player is a single player
+#
+#
 def show_player(player)
 	puts"\nShowing Player and Stats\n"
 	puts"#{player.name} has made these moves '#{player.move}'"
@@ -26,7 +28,7 @@ end
 
 #show_all_players method shows all players and their stats
 #
-#+arr accepts an array of players
+#+arr is an array of all players
 #
 #outputs all players and stats
 def show_all_players(arr)
@@ -45,6 +47,7 @@ def add_two_players(players)
 		players << add_a_player
 	end
 end
+
 
 
 
@@ -73,7 +76,7 @@ players = []
 puts "Welcome to rock-paper-scissor game"
 
 while choice != 0
-	puts "\n\n1 Review players\n2 Play a game\n3 Play a match\n0 Exit"
+	puts "\n\n1 Review players\n2 Play a game\n3 Play a match\n4 Add a Player\n0 Exit"
 	print "\nPlease make a selection "
 	choice = gets.chomp.to_i
 	
@@ -81,16 +84,18 @@ while choice != 0
 	 	show_all_players(players)
 	 	
 	elsif choice == 2
-		puts "Now playing a game\n"
+		puts "\nNow playing a game\n"
 		add_two_players(players)
 		Game.new.play_game(players)
 
 	elsif choice == 3
-		puts "Now playing a match\n"
+		puts "\nNow playing a match\n"
 		add_two_players(players)
 		print "How many games would you like in your match? "
 		matches = gets.chomp.to_i
 		play_matches(matches,players)
+
+
 
 	elsif choice == 0
 		puts "\nGoodbye"
