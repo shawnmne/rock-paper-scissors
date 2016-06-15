@@ -46,9 +46,11 @@ class Game
 		outcome = "tie"
 		while outcome == "tie"
 			puts "\n\nROCK * PAPER * SCISSORS * SHOOT\n\n"
-			players.each do |player|
-					puts "\n#{player.name} it is your turn"
-					player.move = player.move + player.enter_toss
+			i = 0
+			while i < 2
+					puts "\n#{players[i].name} it is your turn"
+					players[i].move = players[i].move + players[i].enter_toss
+					i += 1
 			end
 			outcome = Rule.new.determine_outcome_from_tosses(players[0].last_move, players[1].last_move)
 		end
